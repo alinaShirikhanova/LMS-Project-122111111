@@ -1,6 +1,7 @@
 package view;
 
 import view.course.AddCourseFrame;
+import view.course.CourseListPanel;
 import view.student.AddStudentFrame;
 import view.student.AddStudentPanel;
 import view.student.StudentListPanel;
@@ -12,6 +13,9 @@ public class MainFrame extends JFrame {
     public static AddStudentFrame addStudentFrame = new AddStudentFrame();
     public static AddCourseFrame addCourseFrame = new AddCourseFrame();
 
+    public static StudentListPanel studentListPanel = new StudentListPanel();
+    public static CourseListPanel courseListPanel = new CourseListPanel();
+
     public MainFrame() {
         setTitle("LMS");
 //      устанавливаем размер
@@ -20,7 +24,7 @@ public class MainFrame extends JFrame {
         setLocation(300, 300);
         setLayout(new FlowLayout());
         setJMenuBar(new MainMenuBar());
-        add(new StudentListPanel());
+        add(studentListPanel);
 
         setVisible(true);
     }

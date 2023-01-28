@@ -1,5 +1,6 @@
 package view;
 
+import com.company.Main;
 import view.course.AddCourseFrame;
 import view.student.AddStudentFrame;
 
@@ -10,17 +11,8 @@ import java.awt.event.ActionListener;
 public class MainMenuBar extends JMenuBar {
     public MainMenuBar(){
         add(fileMenu());
+        add(lists());
         add(helpMenu());
-    }
-
-    private JMenu helpMenu(){
-        JMenu help = new JMenu("Помощь");
-        JMenuItem aboutProgramme = new JMenuItem("О программе");
-        JMenuItem reference = new JMenuItem("Справка");
-
-        help.add(aboutProgramme);
-        help.add(reference);
-        return help;
     }
 
 
@@ -41,18 +33,51 @@ public class MainMenuBar extends JMenuBar {
         newStudent.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddStudentFrame();
+                MainFrame.addStudentFrame.setVisible(true);
             }
         });
 
         newCourse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                new AddCourseFrame();
+                MainFrame.addCourseFrame.setVisible(true);
             }
         });
 
-
         return file;
     }
+
+
+    private JMenu lists() {
+        JMenu lists = new JMenu("Списки");
+        JMenuItem courses = new JMenuItem("Курсы");
+        JMenuItem students = new JMenuItem("Студенты");
+
+        lists.add(courses);
+        lists.add(students);
+
+        courses.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                Main.mainFrame.remove(MainFrame.studentListPanel);
+                Main.mainFrame.add(MainFrame.courseListPanel);
+                Main.mainFrame.pack();
+            }
+        });
+        return lists;
+    }
+
+
+    private JMenu helpMenu(){
+        JMenu help = new JMenu("Помощь");
+        JMenuItem aboutProgramme = new JMenuItem("О программе");
+        JMenuItem reference = new JMenuItem("Справка");
+
+        help.add(aboutProgramme);
+        help.add(reference);
+        return help;
+    }
+
+
 }
+

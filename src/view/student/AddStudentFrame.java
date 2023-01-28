@@ -12,6 +12,5 @@ public class AddStudentFrame extends JFrame {
         add(new AddStudentPanel());
 
         setVisible(false);
-
     }
 }
