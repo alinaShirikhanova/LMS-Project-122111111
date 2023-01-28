@@ -9,9 +9,10 @@ public class Course {
     private String description;
 
     static ArrayList<Course> list = new ArrayList<>();
-    static String[] headers = {"ID", "Title", "Description"};
-    public static DefaultTableModel model = new DefaultTableModel(headers, 0);
     private static int lastID = 0;
+    static String headers[] = {"ID", "Title", "Description"};
+    public static DefaultTableModel model = new DefaultTableModel(headers, 0);
+
 
     public Course(String title, String description) {
         this.id = ++lastID;
@@ -20,13 +21,13 @@ public class Course {
         list.add(this);
         addRow(this);
     }
+
     public static void addRow(Course course){
         model.addRow(
                 new Object[] {
-                        course.id,
-                        course.title,
-                        course.description
-
+                        course.getId(),
+                        course.getTitle(),
+                        course.getDescription()
                 });
     }
 

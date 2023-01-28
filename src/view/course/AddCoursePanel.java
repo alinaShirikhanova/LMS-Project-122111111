@@ -1,33 +1,39 @@
 package view.course;
 
-import model.Student;
-import view.student.AddStudentPanel;
+
+
+
+
+
+import model.Course;
+import view.MainFrame;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddCoursePanel extends JPanel {
+public class AddCoursePanel extends JPanel{
     public AddCoursePanel() {
-        JTextField name = new JTextField(10);
-        JTextField surname = new JTextField(10);
+        JTextField title = new JTextField(10);
+        JTextField description = new JTextField(10);
+        JButton addCourse = new JButton("Добавить");
 
-        JButton addStudentButton = new JButton("Добавить");
-
-        addStudentButton.addActionListener(new ActionListener() {
+        addCourse.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (!name.getText().isEmpty() && !surname.getText().isEmpty()) {
-                    new Student(name.getText(), surname.getText());
-                    name.setText("");
-                    surname.setText("");
+                if (!title.getText().concat(description.getText()).isEmpty()) {
+                    new Course(title.getText(), description.getText());
+                    title.setText("");
+                    description.setText("");
+                    MainFrame.addCourseFrame.setVisible(false);
                 }
             }
         });
 
-        add(name);
-        add(surname);
-        add(addStudentButton);
+        add(title);
+        add(description);
+        add(addCourse);
+
         setVisible(true);
     }
 }

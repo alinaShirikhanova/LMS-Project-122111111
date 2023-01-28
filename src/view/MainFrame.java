@@ -1,5 +1,6 @@
 package view;
 
+import view.course.AddCourseFrame;
 import view.student.AddStudentFrame;
 import view.student.AddStudentPanel;
 import view.student.StudentListPanel;
@@ -9,6 +10,8 @@ import java.awt.*;
 
 public class MainFrame extends JFrame {
     public static AddStudentFrame addStudentFrame = new AddStudentFrame();
+    public static AddCourseFrame addCourseFrame = new AddCourseFrame();
+
     public MainFrame() {
         setTitle("LMS");
 //      устанавливаем размер
@@ -22,3 +25,7 @@ public class MainFrame extends JFrame {
         setVisible(true);
     }
 }
+
+// blin blinskiy
+//// git@github.com:EduardGatiatullin/28.01.git
+////@g00dnevvs
