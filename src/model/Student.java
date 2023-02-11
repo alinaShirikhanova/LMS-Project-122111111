@@ -1,5 +1,7 @@
 package model;
 
+import repository.StudentRepository;
+
 import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
@@ -13,6 +15,17 @@ public class Student {
     public static DefaultTableModel model = new DefaultTableModel(headers, 0);
     private static int lastID = 0;
 
+    public static void update(int id, int index, String name, String surname) {
+        list.get(index).name = name;
+        list.get(index).surname = surname;
+        StudentRepository.updateStudent(id, name, surname);
+    }
+
+    public static void delete(int id, int index) {
+        list.remove(index);
+        model.removeRow(index);
+        StudentRepository.deleteStudent(id);
+    }
     public Student(String name, String surname) {
         this.id = ++lastID;
         this.name = name;
@@ -20,9 +33,10 @@ public class Student {
         list.add(this);
         addRow(this);
     }
-    public static void addRow(Student student){
+
+    public static void addRow(Student student) {
         model.addRow(
-                new Object[] {
+                new Object[]{
                         student.id,
                         student.name,
                         student.surname
