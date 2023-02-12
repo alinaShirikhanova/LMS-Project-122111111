@@ -40,10 +40,8 @@ public class StudentJPopUpMenu extends JPopupMenu {
                 case "delete":
                     Student.delete(id, index);
                 case "enroll":
-                    new ChoiceCourse();
+                    new ChoiceCourse(Student.getStudentById(id));
             }
-
-
         }
     }
 }

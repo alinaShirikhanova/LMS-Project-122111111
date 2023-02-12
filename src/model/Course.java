@@ -16,6 +16,16 @@ public class Course {
 
     public Course(String title, String description) {
         this.id = ++lastID;
+        this.setProperties(title, description);
+
+    }
+
+    public Course(int id, String title, String description) {
+        this.id = id;
+        this.setProperties(title, description);
+    }
+
+    public void setProperties(String title, String description) {
         this.title = title;
         this.description = description;
         list.add(this);
@@ -29,6 +39,13 @@ public class Course {
                         course.getTitle(),
                         course.getDescription()
                 });
+    }
+
+    public static Course getCourseById(int courseID) {
+        for (Course course : list)
+            if (course.id == courseID)
+                return course;
+        return null;
     }
 
     public String toString() {

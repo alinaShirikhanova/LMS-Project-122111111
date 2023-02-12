@@ -26,8 +26,18 @@ public class Student {
         model.removeRow(index);
         StudentRepository.deleteStudent(id);
     }
+
     public Student(String name, String surname) {
         this.id = ++lastID;
+        this.setProperties(name, surname);
+    }
+
+    public Student(int id, String name, String surname) {
+        this.id = id;
+        this.setProperties(name, surname);
+    }
+
+    public void setProperties(String name, String surname) {
         this.name = name;
         this.surname = surname;
         list.add(this);
@@ -42,6 +52,14 @@ public class Student {
                         student.surname
 
                 });
+    }
+
+    public static Student getStudentById(int id) {
+        for (Student student : list) {
+            if (student.id == id)
+                return student;
+        }
+        return null;
     }
 
     public String toString() {
@@ -94,6 +112,10 @@ public class Student {
             System.out.println(course.getTitle() + " " + course.getDescription() + ": ");
             System.out.println(AcademicPerformance.getMarksByStudentAndCourse(this, course));
         }
+    }
+
+    public CourseEnrollment addCourse(Course course) {
+        return new CourseEnrollment(this, course);
     }
 }
 
